@@ -1,0 +1,23 @@
+@if (exercise().exercise) {
+  <h3 class="font-semibold text-md">{{exercise().exercise}}</h3>
+}
+@if (exercise().sets) {
+  <p class="text-sm">No. of Sets: <span>{{exercise().sets}}</span></p>
+  @if (exercise().reps) {
+    <p class="text-sm">No. of Reps/Set: <span>{{exercise().reps}}/Set</span></p>
+  }
+  @if (exercise().weight) {
+    <p class="text-sm">Weight: <span>{{exercise().weight}} kg</span></p>
+  }
+}
+@if (exercise().duration) {
+  <p class="text-sm">Duration: <span>{{exercise().duration}} min</span></p>
+}
+
+@if (exercise().distance) {
+  <p class="text-sm">Distance: <span>{{exercise().distance}} m</span></p>
+}
+
+@if (exercise().burnedCalories > 0) {
+  <p class="font-medium text-sm">Burned kCal: <span>{{exercise().burnedCalories}} kCal</span></p>
+}

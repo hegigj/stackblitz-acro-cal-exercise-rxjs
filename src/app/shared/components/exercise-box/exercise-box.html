@@ -1,0 +1,8 @@
+@if (exercise().exercise) {
+  <h3 class="font-semibold text-md">{{exercise().exercise}}</h3>
+} @else {
+  <h3 class="font-semibold text-md">Select exercise</h3>
+}
+@if (exercise().burnedCalories > 0) {
+  <p class="text-sm">Burned kCal: <span>{{exercise().burnedCalories}} kCal</span></p>
+}

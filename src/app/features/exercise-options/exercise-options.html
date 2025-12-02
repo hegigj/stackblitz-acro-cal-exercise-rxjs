@@ -1,0 +1,23 @@
+<section class="mb-4">
+  <h2 class="font-semibold text-md text-slate-500">Sets exercises</h2>
+  <div class="flex items-center divide-x-1 divide-solid divide-slate-200">
+    @for (exercise of setsOptions(); track $index) {
+      <exercise-option
+        [exercise]="exercise"
+        [selectedExercise]="(exerciseService.selectedExercise() | async)?.exercise"
+        (selectExercise)="exerciseService.addExercise($event)"/>
+    }
+  </div>
+</section>
+
+<section>
+  <h2 class="font-semibold text-md text-slate-500">Treadmill exercises</h2>
+  <div class="flex items-center divide-x-1 divide-solid divide-slate-200">
+    @for (exercise of runningOptions(); track $index) {
+      <exercise-option
+        [exercise]="exercise"
+        [selectedExercise]="(exerciseService.selectedExercise() | async)?.exercise"
+        (selectExercise)="exerciseService.addExercise($event)"/>
+    }
+  </div>
+</section>

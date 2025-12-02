@@ -1,0 +1,24 @@
+@if (exerciseService.exercises() | async; as exercises) {
+  <section class="flex p-4">
+    <div class="flex items-center divide-x-1 divide-solid divide-slate-200">
+      @for (exercise of exercises; track exercise.index) {
+        <exercise-box
+          [exercise]="exercise"
+          [selectedIndex]="exerciseService.selectedExerciseIndex() | async"
+          (selectExercise)="exerciseService.selectExercise($event.index)"/>
+      }
+    </div>
+    <div class="ml-2 flex flex-col justify-between items-end p-2">
+      <button class="cursor-pointer text-red-500" type="button" (click)="exerciseService.clearExercises()">
+        <span class="material-symbols-outlined">delete</span>
+      </button>
+      <h3 class="font-semibold text-sm">Total est. calories: <span>{{exercises | reduce: 'burnedCalories'}} kCal</span></h3>
+    </div>
+  </section>
+}
+
+@if ((exerciseService.selectedExerciseIndex() | async) !== null){
+  <section class="p-4">
+    <exercise-options/>
+  </section>
+}
