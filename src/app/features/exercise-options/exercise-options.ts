@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {IExerciseOption} from '../../core/interfaces/exercise-option.interface';
 import {ExerciseOption} from '../../shared/components/exercise-option/exercise-option';
 import {ExerciseService} from '../../core/services/exercise.service';
@@ -11,7 +11,7 @@ import {AsyncPipe} from '@angular/common';
     AsyncPipe
   ],
   templateUrl: './exercise-options.html',
-  styles: ``,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExerciseOptions {
   public readonly exerciseService = inject(ExerciseService);

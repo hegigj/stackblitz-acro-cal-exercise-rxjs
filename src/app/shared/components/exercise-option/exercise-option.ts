@@ -1,5 +1,6 @@
-import {Component, computed, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input, output} from '@angular/core';
 import {IExerciseOption} from '../../../core/interfaces/exercise-option.interface';
+import {IExercise} from "../../../core/interfaces/exercise.interface";
 
 @Component({
   selector: 'exercise-option',
@@ -10,11 +11,12 @@ import {IExerciseOption} from '../../../core/interfaces/exercise-option.interfac
     '[class.bg-green-300]': 'isSelected()',
     '(click)': 'selectExercise.emit(exercise())'
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExerciseOption {
   public exercise = input.required<IExerciseOption>();
-  public selectedExercise = input<string | null>();
+  public selectedExercise = input<IExercise | null>();
   public selectExercise = output<IExerciseOption>();
 
-  public isSelected = computed(() => this.selectedExercise() === this.exercise().exercise)
+  public isSelected = computed(() => this.selectedExercise()?.exercise === this.exercise().exercise)
 }

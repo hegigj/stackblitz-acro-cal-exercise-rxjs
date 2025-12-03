@@ -4,7 +4,7 @@
     @for (exercise of setsOptions(); track $index) {
       <exercise-option
         [exercise]="exercise"
-        [selectedExercise]="(exerciseService.selectedExercise() | async)?.exercise"
+        [selectedExercise]="exerciseService.selectedExercise() | async"
         (selectExercise)="exerciseService.addExercise($event)"/>
     }
   </div>
@@ -16,7 +16,7 @@
     @for (exercise of runningOptions(); track $index) {
       <exercise-option
         [exercise]="exercise"
-        [selectedExercise]="(exerciseService.selectedExercise() | async)?.exercise"
+        [selectedExercise]="exerciseService.selectedExercise() | async"
         (selectExercise)="exerciseService.addExercise($event)"/>
     }
   </div>

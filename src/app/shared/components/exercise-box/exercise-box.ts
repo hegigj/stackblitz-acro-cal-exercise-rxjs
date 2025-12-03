@@ -1,4 +1,4 @@
-import {Component, computed, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input, output} from '@angular/core';
 import {IExercise} from '../../../core/interfaces/exercise.interface';
 
 @Component({
@@ -10,6 +10,7 @@ import {IExercise} from '../../../core/interfaces/exercise.interface';
     '[class.bg-green-300]': 'isSelected()',
     '(click)': 'selectExercise.emit(exercise())'
   },
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExerciseBox {
   public exercise = input.required<IExercise>();
